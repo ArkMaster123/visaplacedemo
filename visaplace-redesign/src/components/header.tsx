@@ -62,10 +62,11 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="flex items-center">
-              <span className="text-2xl font-bold text-primary-600">Visa</span>
-              <span className="text-2xl font-bold text-accent-600">Place</span>
-            </div>
+            <img 
+              src="/images/visaplace-logo-simple.svg" 
+              alt="VisaPlace - Immigration Starts Here" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
