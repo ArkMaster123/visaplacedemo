@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import AIChatbot from "@/components/ai-chatbot";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -236,24 +237,105 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Our Legal Team */}
       <section className="section-padding">
         <div className="container-padding">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+                Our Experienced Legal Team
+              </h2>
+              <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+                Meet our dedicated immigration lawyers and consultants who are here to help you achieve your immigration goals
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
+              <div className="text-center">
+                <div className="relative mb-6 group">
+                  <img 
+                    src="/images/legal1.jpg" 
+                    alt="Senior Immigration Lawyer" 
+                    className="w-full h-80 object-cover rounded-2xl shadow-soft-lg group-hover:shadow-lg transition-shadow"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-900 mb-2">
+                  Senior Immigration Counsel
+                </h3>
+                <p className="text-neutral-600 mb-4">
+                  Specializing in complex Canadian and US immigration cases with over 15 years of experience
+                </p>
+                <div className="flex justify-center space-x-2">
+                  <Badge variant="outline">Express Entry</Badge>
+                  <Badge variant="outline">Business Immigration</Badge>
+                </div>
+              </div>
+              
+              <div className="text-center">
+                <div className="relative mb-6 group">
+                  <img 
+                    src="/images/legal2.jpg" 
+                    alt="Immigration Consultant" 
+                    className="w-full h-80 object-cover rounded-2xl shadow-soft-lg group-hover:shadow-lg transition-shadow"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-900 mb-2">
+                  Lead Immigration Consultant
+                </h3>
+                <p className="text-neutral-600 mb-4">
+                  Expert in family sponsorship and work permit applications with a 99% success rate
+                </p>
+                <div className="flex justify-center space-x-2">
+                  <Badge variant="outline">Family Sponsorship</Badge>
+                  <Badge variant="outline">Work Permits</Badge>
+                </div>
+              </div>
+              
+              <div className="text-center">
+                <div className="relative mb-6 group">
+                  <img 
+                    src="/images/legal3.jpg" 
+                    alt="US Immigration Specialist" 
+                    className="w-full h-80 object-cover rounded-2xl shadow-soft-lg group-hover:shadow-lg transition-shadow"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-900 mb-2">
+                  US Immigration Specialist
+                </h3>
+                <p className="text-neutral-600 mb-4">
+                  Focused on US green cards, work visas, and citizenship applications
+                </p>
+                <div className="flex justify-center space-x-2">
+                  <Badge variant="outline">Green Cards</Badge>
+                  <Badge variant="outline">H1B Visas</Badge>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-padding bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+        <div className="container-padding">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Ready to Start Your Immigration Journey?
             </h2>
-            <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
-              Get your free assessment today and discover your best immigration options
+            <p className="text-lg text-primary-100 mb-8 max-w-2xl mx-auto">
+              Get your free assessment today and discover your best immigration options with our expert legal team
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
+              <Button size="lg" variant="secondary" asChild>
                 <Link href="/assessment">
                   Get Free Assessment
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-600" asChild>
                 <Link href="/consultation">
                   Book Consultation
                 </Link>
@@ -262,6 +344,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
 
       {/* AI Chatbot */}
       <AIChatbot />
