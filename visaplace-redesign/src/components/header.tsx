@@ -59,9 +59,9 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-neutral-200/50 bg-white/80 backdrop-blur-xl">
       <div className="container-padding">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
             <img 
               src="/images/visaplace-logo-simple.svg" 
               alt="VisaPlace - Immigration Starts Here" 
@@ -69,53 +69,55 @@ const Header = () => {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList>
-              {navigationItems.map((item) => (
-                <NavigationMenuItem key={item.title}>
-                  <NavigationMenuTrigger className="h-auto p-0 font-medium text-neutral-700 hover:text-primary-600 data-[active]:text-primary-600 data-[state=open]:text-primary-600">
-                    {item.title}
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="grid w-[400px] gap-3 p-4">
-                      {item.items.map((subItem) => (
-                        <NavigationMenuLink key={subItem.title} asChild>
-                          <Link
-                            href={subItem.href}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-neutral-50 hover:text-primary-600 focus:bg-neutral-50 focus:text-primary-600"
-                          >
-                            <div className="text-sm font-medium leading-none">{subItem.title}</div>
-                          </Link>
-                        </NavigationMenuLink>
-                      ))}
-                    </div>
-                  </NavigationMenuContent>
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex flex-1 justify-center">
+            <NavigationMenu>
+              <NavigationMenuList className="space-x-8">
+                {navigationItems.map((item) => (
+                  <NavigationMenuItem key={item.title}>
+                    <NavigationMenuTrigger className="h-auto p-0 font-medium text-neutral-700 hover:text-blue-800 data-[active]:text-blue-800 data-[state=open]:text-blue-800">
+                      {item.title}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <div className="grid w-[400px] gap-3 p-4">
+                        {item.items.map((subItem) => (
+                          <NavigationMenuLink key={subItem.title} asChild>
+                            <Link
+                              href={subItem.href}
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-neutral-50 hover:text-blue-800 focus:bg-neutral-50 focus:text-blue-800"
+                            >
+                              <div className="text-sm font-medium leading-none">{subItem.title}</div>
+                            </Link>
+                          </NavigationMenuLink>
+                        ))}
+                      </div>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                ))}
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <Link href="/about" className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                      About
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
-              ))}
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/about" className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:text-primary-600 focus:text-primary-600 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                    About
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="ghost" asChild>
+          {/* CTA Buttons - Right aligned */}
+          <div className="hidden lg:flex items-center space-x-4 flex-shrink-0">
+            <Button variant="ghost" className="text-neutral-700 hover:text-blue-800" asChild>
               <Link href="/assessment">Free Assessment</Link>
             </Button>
-            <Button asChild>
+            <Button className="bg-blue-800 hover:bg-blue-900" asChild>
               <Link href="/consultation">Book Consultation</Link>
             </Button>
           </div>
 
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="lg:hidden">
+            <SheetTrigger asChild className="lg:hidden ml-auto">
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
@@ -125,13 +127,13 @@ const Header = () => {
               <div className="flex flex-col space-y-4 mt-8">
                 {navigationItems.map((item) => (
                   <div key={item.title} className="space-y-2">
-                    <h3 className="font-semibold text-primary-600">{item.title}</h3>
+                    <h3 className="font-semibold text-blue-800">{item.title}</h3>
                     <div className="ml-4 space-y-2">
                       {item.items.map((subItem) => (
                         <Link
                           key={subItem.title}
                           href={subItem.href}
-                          className="block text-sm text-neutral-600 hover:text-primary-600 transition-colors"
+                          className="block text-sm text-neutral-600 hover:text-blue-800 transition-colors"
                           onClick={() => setIsOpen(false)}
                         >
                           {subItem.title}
@@ -142,18 +144,18 @@ const Header = () => {
                 ))}
                 <Link
                   href="/about"
-                  className="font-semibold text-primary-600"
+                  className="font-semibold text-blue-800"
                   onClick={() => setIsOpen(false)}
                 >
                   About
                 </Link>
                 <div className="pt-4 space-y-2">
-                  <Button variant="outline" className="w-full" asChild>
+                  <Button variant="outline" className="w-full border-blue-800 text-blue-800 hover:bg-blue-50" asChild>
                     <Link href="/assessment" onClick={() => setIsOpen(false)}>
                       Free Assessment
                     </Link>
                   </Button>
-                  <Button className="w-full" asChild>
+                  <Button className="w-full bg-blue-800 hover:bg-blue-900" asChild>
                     <Link href="/consultation" onClick={() => setIsOpen(false)}>
                       Book Consultation
                     </Link>
