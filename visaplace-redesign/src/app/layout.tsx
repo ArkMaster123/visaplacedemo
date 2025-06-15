@@ -20,11 +20,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://visaplace.com'),
   openGraph: {
     title: "VisaPlace - Canadian & US Immigration Law Firm",
     description: "Expert immigration lawyers helping you navigate Canadian and US immigration. Get your visa assessment today.",
-    url: 'https://visaplace.com',
     siteName: 'VisaPlace',
     locale: 'en_US',
     type: 'website',
