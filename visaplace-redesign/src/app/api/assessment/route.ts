@@ -86,7 +86,7 @@ ASSESSMENT STAGES:
 For the first message, always start with a welcoming message and provide country selection options.
 
 Always provide actionable options that move the assessment forward. Never leave users without clear next steps.`,
-      messages,
+      messages: messages || [],
     });
 
     console.log('GenerateObject result:', result.object);
