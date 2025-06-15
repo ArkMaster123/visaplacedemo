@@ -49,10 +49,7 @@ export async function POST(req: Request) {
     const selectedModel = modelMap[model] || 'gpt-4o-mini';
     console.log('Using AI model:', selectedModel);
 
-    const result = await generateObject({
-      model: openai(selectedModel),
-      schema: AssessmentResponseSchema,
-      system: `You are an expert immigration assessment assistant for VisaPlace. Your role is to guide users through structured immigration assessments for Canada and US.
+    const systemPrompt = `You are an expert immigration assessment assistant for VisaPlace. Your role is to guide users through structured immigration assessments for Canada and US.
 
 CORE ASSESSMENT JOURNEYS:
 1. **Canadian Express Entry Assessment** - For skilled workers
@@ -85,7 +82,12 @@ ASSESSMENT STAGES:
 
 For the first message, always start with a welcoming message and provide country selection options.
 
-Always provide actionable options that move the assessment forward. Never leave users without clear next steps.`,
+Always provide actionable options that move the assessment forward. Never leave users without clear next steps.`;
+
+    const result = await generateObject({
+      model: openai(selectedModel),
+      schema: AssessmentResponseSchema,
+      system: systemPrompt,
       messages: messages || [],
     });
 
