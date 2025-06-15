@@ -1,5 +1,6 @@
 import { getAppUrl } from '@/lib/utils';
 
+// Health check endpoint for deployment verification
 export async function GET() {
   return new Response(JSON.stringify({ 
     status: 'ok', 
