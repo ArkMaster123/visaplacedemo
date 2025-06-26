@@ -48,11 +48,27 @@ export default function PricingPage() {
   };
 
   const togglePhase = (phaseNumber: number) => {
-    setSelectedPhases(prev => 
-      prev.includes(phaseNumber) 
-        ? prev.filter(p => p !== phaseNumber)
-        : [...prev, phaseNumber]
-    );
+    setSelectedPhases(prev => {
+      if (prev.includes(phaseNumber)) {
+        // Remove the phase
+        return prev.filter(p => p !== phaseNumber);
+      } else {
+        // Add the phase, but handle conflicts
+        let newPhases = [...prev, phaseNumber];
+        
+        // If selecting Phase 1, remove Base Package (Phase 0) since Phase 1 includes everything from Base
+        if (phaseNumber === 1 && prev.includes(0)) {
+          newPhases = newPhases.filter(p => p !== 0);
+        }
+        
+        // If selecting Base Package (Phase 0), remove Phase 1 since they conflict
+        if (phaseNumber === 0 && prev.includes(1)) {
+          newPhases = newPhases.filter(p => p !== 1);
+        }
+        
+        return newPhases;
+      }
+    });
   };
 
   const getTotal = () => {

@@ -17,12 +17,12 @@ const basePrices = {
   crmIntegration: 5000,
   analytics: 1000,
   
-  // Package Prices
-  basePackage: 7000,
+  // Package Prices - calculated to provide savings
+  basePackage: 7000, // chatbot + assessment = 7000, so no savings but convenient package
   customizationPackage: 8000,
-  phase1Complete: 15000,
-  phase2Complete: 4500,
-  phase3Complete: 6000,
+  phase1Complete: 13500, // Individual total would be 14000, so $500 savings
+  phase2Complete: 4000, // Individual total would be 4500, so $500 savings  
+  phase3Complete: 5400, // Individual total would be 6000, so $600 savings
 };
 
 // Apply agency fee to all prices
