@@ -1000,11 +1000,22 @@ export default function PricingPage() {
             </div>
 
             <div className="text-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 text-xl font-bold mb-4" asChild>
-                <Link href="/consultation">
-                  Start with Phase 1 - {formatPrice(displayPricing.phase1Complete)}
-                  <ArrowRight className="ml-3 h-6 w-6" />
-                </Link>
+              <Button 
+                size="lg" 
+                className={`${selectedPhases.includes(1) ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white px-12 py-4 text-xl font-bold mb-4`}
+                onClick={() => togglePhase(1)}
+              >
+                {selectedPhases.includes(1) ? (
+                  <>
+                    <CheckCircle className="mr-3 h-6 w-6" />
+                    Phase 1 Added - {formatPrice(displayPricing.phase1Complete)}
+                  </>
+                ) : (
+                  <>
+                    <ShoppingCart className="mr-3 h-6 w-6" />
+                    Start with Phase 1 - {formatPrice(displayPricing.phase1Complete)}
+                  </>
+                )}
               </Button>
               <p className="text-slate-600 mb-2">
                 🚀 Setup in 2-3 weeks • 💰 Professional implementation • 🛡️ Quality service guarantee
