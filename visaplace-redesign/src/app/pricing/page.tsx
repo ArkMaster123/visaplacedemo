@@ -154,11 +154,11 @@ export default function PricingPage() {
     const individualTotal = [...selectedPhases, ...selectedComponents.filter(id => {
       const component = componentPricing[id as keyof typeof componentPricing];
       return component && !selectedPhases.includes(component.phase);
-    })].reduce((total, item) => {
+    })].reduce((total: number, item) => {
       if (typeof item === 'number') {
         // It's a phase - add up individual component costs
         const phase = phasePackages[item as keyof typeof phasePackages];
-        return total + phase.components.reduce((phaseTotal, componentId) => {
+        return total + phase.components.reduce((phaseTotal: number, componentId) => {
           const component = componentPricing[componentId as keyof typeof componentPricing];
           return phaseTotal + component.price;
         }, 0);
