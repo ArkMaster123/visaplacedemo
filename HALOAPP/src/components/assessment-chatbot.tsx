@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 interface AssessmentOption {
   id: string;
@@ -64,6 +65,7 @@ interface AssessmentChatbotProps {
 type AIModel = 'gpt-4o-mini' | 'gpt-4.1-nano';
 
 export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbotProps) {
+  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -370,7 +372,9 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
     setCurrentProgress(0);
     setError(null);
     setIsLoading(false);
-    startAssessment();
+    sessionStorage.removeItem('halo_user_info');
+    sessionStorage.removeItem('halo_method');
+    router.push('/');
   };
 
   const handleModelChange = (model: AIModel) => {

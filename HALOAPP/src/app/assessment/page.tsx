@@ -69,17 +69,13 @@ export default function AssessmentPage() {
     }));
   };
 
-  // Check if user info already exists in session
+  // Always reset session data on method change
   useEffect(() => {
-    const savedUserInfo = sessionStorage.getItem('halo_user_info');
-    const savedMethod = sessionStorage.getItem('halo_method');
-    
-    if (savedUserInfo && savedMethod === method) {
-      const userInfo = JSON.parse(savedUserInfo);
-      setUserInfo(userInfo);
-      setFormData(userInfo);
-      setIsFormComplete(true);
-    }
+    sessionStorage.removeItem('halo_user_info');
+    sessionStorage.removeItem('halo_method');
+    setUserInfo(null);
+    setFormData({ name: '', domain: '', history: '' });
+    setIsFormComplete(false);
   }, [method]);
 
   if (!isFormComplete) {

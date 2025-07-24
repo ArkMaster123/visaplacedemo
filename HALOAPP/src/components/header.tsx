@@ -66,7 +66,9 @@ const Header = () => {
               <NavigationMenuList className="space-x-8">
                 {navigationItems.map((item) => (
                   <NavigationMenuItem key={item.title}>
-                    <NavigationMenuTrigger className="h-auto p-0 font-medium text-neutral-700 hover:text-blue-800 data-[active]:text-blue-800 data-[state=open]:text-blue-800">
+                    <NavigationMenuTrigger
+                      className="h-auto px-2 py-1 font-medium text-neutral-700 bg-transparent rounded-none border-0 shadow-none hover:text-blue-800 hover:underline hover:bg-transparent focus:bg-transparent focus:underline data-[active]:text-blue-800 data-[state=open]:text-blue-800 transition-all duration-150"
+                    >
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
