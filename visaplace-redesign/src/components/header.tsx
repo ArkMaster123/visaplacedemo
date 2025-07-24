@@ -96,13 +96,6 @@ const Header = () => {
                 ))}
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/pricing" className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                      Pricing
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
                     <Link href="/about" className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
                       About
                     </Link>
@@ -149,13 +142,6 @@ const Header = () => {
                     </div>
                   </div>
                 ))}
-                <Link
-                  href="/pricing"
-                  className="font-semibold text-blue-800"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Pricing
-                </Link>
                 <Link
                   href="/about"
                   className="font-semibold text-blue-800"

@@ -3,8 +3,7 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import AssessmentChatbot from '@/components/assessment-chatbot';
-import { ArrowLeft, CheckCircle, Brain, Target, Users } from 'lucide-react';
-import Link from 'next/link';
+import { CheckCircle, Brain, Target, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
@@ -28,20 +27,6 @@ export default function AssessmentPage() {
         
         <div className="relative z-10 container-padding w-full">
           <div className="max-w-4xl mx-auto text-center text-white">
-            {/* Back Button */}
-            <div className="flex justify-start mb-6">
-              <Button 
-                variant="ghost" 
-                className="text-white hover:bg-white/20 backdrop-blur-sm border border-white/20" 
-                asChild
-              >
-                <Link href="/" className="flex items-center gap-2">
-                  <ArrowLeft className="h-4 w-4" />
-                  Back to Home
-                </Link>
-              </Button>
-            </div>
-            
             <div className="inline-flex items-center rounded-full bg-white/20 backdrop-blur-sm px-6 py-3 text-sm font-medium mb-6">
               <Brain className="mr-2 h-4 w-4" />
               AI-Powered Assessment
