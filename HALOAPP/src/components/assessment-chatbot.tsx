@@ -50,9 +50,20 @@ interface Message {
   assessment?: AssessmentResponse;
 }
 
+interface UserInfo {
+  name: string;
+  domain: string;
+  history: string;
+}
+
+interface AssessmentChatbotProps {
+  method: string;
+  userInfo: UserInfo | null;
+}
+
 type AIModel = 'gpt-4o-mini' | 'gpt-4.1-nano';
 
-export default function AssessmentChatbot() {
+export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbotProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -62,6 +73,8 @@ export default function AssessmentChatbot() {
   const [showSettings, setShowSettings] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedModel, setSelectedModel] = useState<AIModel>('gpt-4o-mini');
+  const [interactionMode, setInteractionMode] = useState<string>('');
+  const [textInput, setTextInput] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const aiModels = [
@@ -83,47 +96,50 @@ export default function AssessmentChatbot() {
 
   const howItWorksSteps = [
     {
-      title: "AI-Powered Assessment",
+      title: "Spark AI Expertise Capture",
       icon: Brain,
-      description: "Our advanced AI analyzes your responses in real-time to provide personalized immigration guidance.",
+      description: "Meet Spark, an advanced AI built by Mega Lab to capture and organize your professional expertise through intelligent conversation.",
       details: [
-        "Uses OpenAI's latest language models",
-        "Trained on Canadian and US immigration law",
-        "Adapts questions based on your specific situation",
-        "No pre-written scripts - every response is generated for you"
+        "Uses sophisticated prompting to extract tacit knowledge",
+        "Adapts questioning style based on your responses",
+        "Captures stories, processes, and decision-making patterns",
+        "Built specifically for expertise elicitation and knowledge management"
       ]
     },
     {
-      title: "Smart Conversation Flow",
+      title: "Method-Specific Approach",
       icon: MessageSquare,
-      description: "The AI asks one focused question at a time, building a complete picture of your immigration goals and background.",
+      description: `Method ${method} uses a specialized approach to capture different aspects of your expertise and professional knowledge.`,
       details: [
-        "Starts with country preference (Canada vs US)",
-        "Explores your immigration goals (work, study, family)",
-        "Assesses your background and qualifications",
-        "Provides pathway recommendations"
+        method === '1' ? "Captures 3-5 detailed stories from your expertise" :
+        method === '2' ? "Generates targeted questions based on your responses" :
+        method === '3' ? "Guides step-by-step process demonstrations" :
+        "Facilitates think-aloud protocols for decision-making",
+        "Builds rapport through empathetic conversation",
+        "Tracks progress and completion internally",
+        "Focuses on extracting tacit knowledge and insights"
       ]
     },
     {
-      title: "Real-Time Analysis",
+      title: "Knowledge Extraction Process",
       icon: Target,
-      description: "Each response is analyzed to calculate your eligibility score and determine the best next steps for your situation.",
+      description: "The AI uses proven techniques from organizational knowledge management to capture your unique expertise.",
       details: [
-        "Calculates eligibility scores for different programs",
-        "Identifies the strongest immigration pathways",
-        "Provides specific recommendations",
-        "Tracks progress through the assessment"
+        "Elicits both explicit and tacit knowledge",
+        "Captures contextual factors and nuances",
+        "Documents decision-making processes",
+        "Preserves institutional knowledge and experience"
       ]
     },
     {
-      title: "Personalized Results",
+      title: "Structured Output",
       icon: Sparkles,
-      description: "Get tailored recommendations and connect with our immigration experts for detailed guidance on your specific case.",
+      description: "Your expertise is captured and organized for future reference and knowledge sharing within your organization.",
       details: [
-        "Customized action plan for your situation",
-        "Eligibility scores for relevant programs",
-        "Direct connection to immigration lawyers",
-        "Next steps clearly outlined"
+        "Comprehensive summary of captured knowledge",
+        "Organized by themes and patterns",
+        "Ready for knowledge base integration",
+        "Preserves your unique insights and experience"
       ]
     }
   ];
@@ -160,9 +176,12 @@ export default function AssessmentChatbot() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: [{ role: 'user', content: 'Start immigration assessment' }],
+          messages: [{ role: 'user', content: 'Start expertise capture session' }],
           userProfile,
-          model: selectedModel
+          model: selectedModel,
+          method: method,
+          userInfo: userInfo,
+          interactionMode: interactionMode
         })
       });
 
@@ -195,9 +214,9 @@ export default function AssessmentChatbot() {
       const fallbackMessage: Message = {
         id: Date.now().toString(),
         role: 'assistant',
-        content: "Welcome to your immigration assessment! I'm here to help guide you through your Canadian or US immigration journey. Let's start by understanding your goals.",
+        content: "Welcome to your expertise capture session! I'm here to help capture and explore your professional knowledge and experience. Let's begin by understanding your background.",
         assessment: {
-          message: "Welcome to your immigration assessment! I'm here to help guide you through your Canadian or US immigration journey. Let's start by understanding your goals.",
+                      message: "Welcome to your expertise capture session! I'm here to help capture and explore your professional knowledge and experience. Let's begin by understanding your background.",
           currentStep: "Country Selection",
           progress: 5,
           options: [
@@ -235,6 +254,11 @@ export default function AssessmentChatbot() {
     setIsLoading(true);
     setError(null);
     
+    // Handle interaction mode selection
+    if (option.id === 'mode_buttons' || option.id === 'mode_conversation') {
+      setInteractionMode(option.value);
+    }
+    
     // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -255,7 +279,64 @@ export default function AssessmentChatbot() {
         body: JSON.stringify({
           messages: [...messages, userMessage].map(m => ({ role: m.role, content: m.content })),
           userProfile: updatedProfile,
-          model: selectedModel
+          model: selectedModel,
+          method: method,
+          userInfo: userInfo,
+          interactionMode: interactionMode
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to get assessment response: ${response.status}`);
+      }
+
+      const assessmentData: AssessmentResponse = await response.json();
+      
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: assessmentData.message,
+        assessment: assessmentData
+      };
+      
+      setMessages(prev => [...prev, assistantMessage]);
+      setCurrentProgress(assessmentData.progress);
+      
+    } catch (error) {
+      console.error('Assessment error:', error);
+      setError(error instanceof Error ? error.message : 'Failed to process response');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleTextSubmit = async () => {
+    if (!textInput.trim() || isLoading) return;
+
+    setIsLoading(true);
+    setError(null);
+    
+    // Add user message
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: textInput.trim()
+    };
+    
+    setMessages(prev => [...prev, userMessage]);
+    setTextInput(''); // Clear input
+    
+    try {
+      const response = await fetch('/api/assessment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [...messages, userMessage].map(m => ({ role: m.role, content: m.content })),
+          userProfile: userProfile,
+          model: selectedModel,
+          method: method,
+          userInfo: userInfo,
+          interactionMode: interactionMode
         })
       });
 
@@ -580,9 +661,9 @@ export default function AssessmentChatbot() {
               <Briefcase className="h-5 w-5 text-blue-800" />
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-slate-900">Immigration Assessment</h2>
-              <p className="text-sm text-slate-600 font-normal">
-                Personalized guidance for your immigration journey
+                              <h2 className="text-xl font-semibold text-slate-900">Expertise Capture Session</h2>
+                              <p className="text-sm text-slate-600 font-normal">
+                  AI-powered knowledge elicitation with Spark
               </p>
             </div>
           </div>
@@ -633,7 +714,7 @@ export default function AssessmentChatbot() {
         {/* Progress Bar */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-slate-700">Assessment Progress</span>
+            <span className="text-sm font-medium text-slate-700">Expertise Capture Progress</span>
             <span className="text-sm text-slate-600">{currentProgress}%</span>
           </div>
           <Progress value={currentProgress} className="h-2" />
@@ -697,8 +778,8 @@ export default function AssessmentChatbot() {
                     </Badge>
                   </div>
 
-                  {/* Options */}
-                  {message.assessment.options.length > 0 && (
+                  {/* Options - Show buttons for mode selection or button mode */}
+                  {message.assessment.options.length > 0 && (interactionMode === 'buttons' || !interactionMode) && (
                     <div className="grid gap-3">
                       {message.assessment.options.map((option) => (
                         <Button
@@ -724,6 +805,32 @@ export default function AssessmentChatbot() {
                     </div>
                   )}
 
+                  {/* Text Input for Conversation Mode */}
+                  {interactionMode === 'conversation' && message === messages[messages.length - 1] && (
+                    <div className="flex gap-3">
+                      <input
+                        type="text"
+                        value={textInput}
+                        onChange={(e) => setTextInput(e.target.value)}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter' && !isLoading && textInput.trim()) {
+                            handleTextSubmit();
+                          }
+                        }}
+                        placeholder="Type your response here..."
+                        disabled={isLoading}
+                        className="flex-1 px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                      />
+                      <Button
+                        onClick={handleTextSubmit}
+                        disabled={isLoading || !textInput.trim()}
+                        className="px-6 py-3 bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50"
+                      >
+                        {isLoading ? '...' : 'Send'}
+                      </Button>
+                    </div>
+                  )}
+
                   {/* Recommendations */}
                   {message.assessment.recommendations && message.assessment.recommendations.length > 0 && (
                     <div className="bg-green-50/80 backdrop-blur-sm border border-green-200 rounded-lg p-4">
@@ -742,19 +849,18 @@ export default function AssessmentChatbot() {
                     </div>
                   )}
 
-                  {/* Eligibility Score */}
-                  {message.assessment.eligibilityScore !== undefined && (
-                    <div className="bg-blue-50/80 backdrop-blur-sm border border-blue-200 rounded-lg p-4">
+                  {/* Knowledge Capture Status */}
+                  {message.assessment.eligibilityScore !== undefined && message.assessment.eligibilityScore > 0 && (
+                    <div className="bg-green-50/80 backdrop-blur-sm border border-green-200 rounded-lg p-4">
                       <div className="flex items-center justify-between">
-                        <span className="font-medium text-blue-800">Eligibility Score</span>
-                        <span className="text-2xl font-bold text-blue-800">
-                          {message.assessment.eligibilityScore}%
+                        <span className="font-medium text-green-800">Knowledge Captured</span>
+                        <span className="text-lg font-semibold text-green-800">
+                          Session Active
                         </span>
                       </div>
-                      <Progress 
-                        value={message.assessment.eligibilityScore} 
-                        className="mt-2 h-2" 
-                      />
+                      <div className="text-sm text-green-700 mt-1">
+                        Your expertise is being captured and analyzed
+                      </div>
                     </div>
                   )}
 

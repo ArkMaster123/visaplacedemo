@@ -13,47 +13,35 @@ const Header = () => {
 
   const navigationItems = [
     {
-      title: "Canadian Immigration",
-      href: "/canadian-immigration",
+      title: "Expertise Methods",
+      href: "/",
       items: [
-        { title: "Express Entry", href: "/canadian-immigration/express-entry" },
-        { title: "Provincial Nominee Program", href: "/canadian-immigration/pnp" },
-        { title: "Family Sponsorship", href: "/canadian-immigration/family-sponsorship" },
-        { title: "Work Permits", href: "/canadian-immigration/work-permits" },
-        { title: "Study Permits", href: "/canadian-immigration/study-permits" },
+        { title: "Method 1: Narrative Storytelling", href: "/assessment?method=1" },
+        { title: "Method 2: Targeted Questioning", href: "/assessment?method=2" },
+        { title: "Method 3: Observational Simulation", href: "/assessment?method=3" },
+        { title: "Method 4: Protocol Analysis", href: "/assessment?method=4" },
       ]
     },
     {
-      title: "US Immigration",
-      href: "/us-immigration",
+      title: "How It Works",
+      href: "/how-it-works",
       items: [
-        { title: "Green Cards", href: "/us-immigration/green-cards" },
-        { title: "Work Visas", href: "/us-immigration/work-visas" },
-        { title: "Family Immigration", href: "/us-immigration/family-immigration" },
-        { title: "Student Visas", href: "/us-immigration/student-visas" },
-        { title: "Citizenship", href: "/us-immigration/citizenship" },
+        { title: "Knowledge Elicitation", href: "/how-it-works/elicitation" },
+        { title: "Expertise Capture", href: "/how-it-works/capture" },
+        { title: "AI-Powered Analysis", href: "/how-it-works/analysis" },
+        { title: "Knowledge Organization", href: "/how-it-works/organization" },
       ]
     },
     {
-      title: "Services",
-      href: "/services",
+      title: "About",
+      href: "/about",
       items: [
-        { title: "Visa Consult", href: "/services/visa-consult" },
-        { title: "Visa Premier", href: "/services/visa-premier" },
-        { title: "Corporate Services", href: "/services/corporate" },
-        { title: "Assessment Tools", href: "/services/assessment" },
+        { title: "Our Mission", href: "/about/mission" },
+        { title: "Technology", href: "/about/technology" },
+        { title: "Team", href: "/about/team" },
+        { title: "Research", href: "/about/research" },
       ]
-    },
-    {
-      title: "Resources",
-      href: "/resources",
-      items: [
-        { title: "Immigration News", href: "/resources/news" },
-        { title: "Blog", href: "/resources/blog" },
-        { title: "Country Guides", href: "/resources/guides" },
-        { title: "FAQs", href: "/resources/faqs" },
-      ]
-    },
+    }
   ];
 
   return (
@@ -61,12 +49,15 @@ const Header = () => {
       <div className="container-padding">
         <div className="flex h-16 items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
-            <img 
-              src="/images/visaplace-logo-simple.svg" 
-              alt="VisaPlace - Immigration Starts Here" 
-              className="h-10 w-auto"
-            />
+          <Link href="/" className="flex items-center space-x-3 flex-shrink-0">
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">H</span>
+              </div>
+              <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                HALO
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation - Centered */}
@@ -94,13 +85,6 @@ const Header = () => {
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 ))}
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link href="/about" className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                      About
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </div>
@@ -108,10 +92,10 @@ const Header = () => {
           {/* CTA Buttons - Right aligned */}
           <div className="hidden lg:flex items-center space-x-4 flex-shrink-0">
             <Button variant="ghost" className="text-neutral-700 hover:text-blue-800" asChild>
-              <Link href="/assessment">Free Assessment</Link>
+              <Link href="/">Start Capture</Link>
             </Button>
-            <Button className="bg-blue-800 hover:bg-blue-900" asChild>
-              <Link href="/consultation">Book Consultation</Link>
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" asChild>
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
 
@@ -142,22 +126,15 @@ const Header = () => {
                     </div>
                   </div>
                 ))}
-                <Link
-                  href="/about"
-                  className="font-semibold text-blue-800"
-                  onClick={() => setIsOpen(false)}
-                >
-                  About
-                </Link>
                 <div className="pt-4 space-y-2">
                   <Button variant="outline" className="w-full border-blue-800 text-blue-800 hover:bg-blue-50" asChild>
-                    <Link href="/assessment" onClick={() => setIsOpen(false)}>
-                      Free Assessment
+                    <Link href="/" onClick={() => setIsOpen(false)}>
+                      Start Capture
                     </Link>
                   </Button>
-                  <Button className="w-full bg-blue-800 hover:bg-blue-900" asChild>
-                    <Link href="/consultation" onClick={() => setIsOpen(false)}>
-                      Book Consultation
+                  <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" asChild>
+                    <Link href="/contact" onClick={() => setIsOpen(false)}>
+                      Contact Us
                     </Link>
                   </Button>
                 </div>
