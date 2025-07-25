@@ -320,7 +320,7 @@ function StartCall({ configId, accessToken }: { configId?: string, accessToken: 
                     strokeWidth={0}
                   />
                 </span>
-                <span>Start Call</span>
+                <span>Start Interview</span>
               </Button>
             </motion.div>
           </AnimatePresence>

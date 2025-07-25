@@ -13,19 +13,19 @@
     --card-foreground: 0 0% 3.9%; /* Dark text */
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%; /* Vibrant pink like inspiration */
+    --primary: 330 81% 60%; /* Vibrant pink */
     --primary-foreground: 0 0% 98%; /* White text on pink */
-    --secondary: 0 0% 96.1%; /* Deeper purple for better contrast */
-    --secondary-foreground: 0 0% 9%; /* White text on purple */
+    --secondary: 267 84% 81%; /* Purple */
+    --secondary-foreground: 0 0% 9%; /* Dark text on purple */
     --muted: 0 0% 96.1%; /* Light gray */
     --muted-foreground: 0 0% 45.1%; /* Medium gray text */
-    --accent: 0 0% 96.1%; /* Pink accent for gradient consistency */
-    --accent-foreground: 0 0% 9%; /* White text on accent */
+    --accent: 25 95% 53%; /* Orange accent */
+    --accent-foreground: 0 0% 9%; /* Dark text on accent */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 89.8%; /* Light gray borders */
     --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%; /* Vibrant pink ring */
+    --ring: 330 81% 60%; /* Pink ring */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -36,25 +36,25 @@
 
   .dark {
     /* Dark theme - Deep black with vibrant pink/purple gradients */
-    --background: 0 0% 3.9%; /* Pure black */
+    --background: 0 0% 3.9%; /* Deep dark background */
     --foreground: 0 0% 98%; /* Pure white text */
-    --card: 0 0% 3.9%; /* Very dark gray cards */
+    --card: 0 0% 7%; /* Dark cards */
     --card-foreground: 0 0% 98%; /* White text */
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%; /* Much brighter pink for text visibility */
-    --primary-foreground: 0 0% 9%; /* White text */
-    --secondary: 0 0% 14.9%; /* Much brighter purple for text visibility */
-    --secondary-foreground: 0 0% 98%; /* White text */
+    --primary: 330 81% 60%; /* Bright pink */
+    --primary-foreground: 0 0% 9%; /* Dark text */
+    --secondary: 267 84% 81%; /* Bright purple */
+    --secondary-foreground: 0 0% 9%; /* Dark text */
     --muted: 0 0% 14.9%; /* Dark gray */
     --muted-foreground: 0 0% 63.9%; /* Light gray text */
-    --accent: 0 0% 14.9%; /* Very bright pink accent for gradient text */
-    --accent-foreground: 0 0% 98%; /* White text */
+    --accent: 25 95% 53%; /* Orange accent */
+    --accent-foreground: 0 0% 9%; /* Dark text */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 14.9%; /* Dark gray borders */
     --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%; /* Bright pink ring */
+    --ring: 330 81% 60%; /* Pink ring */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
