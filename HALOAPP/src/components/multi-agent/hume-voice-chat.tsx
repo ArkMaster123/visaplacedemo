@@ -31,8 +31,8 @@ export default function HumeVoiceChat({
   const timeout = useRef<number | null>(null);
   const ref = useRef<ComponentRef<typeof Messages> | null>(null);
 
-  // Optional: use configId from environment variable
-  const configId = process.env['NEXT_PUBLIC_HUME_CONFIG_ID'];
+  // Use the specific HALO model config ID
+  const configId = "5203e88d-cf3e-44ce-9ac7-aff76715e23d";
 
   console.log('HumeVoiceChat rendered with accessToken:', !!accessToken);
 
