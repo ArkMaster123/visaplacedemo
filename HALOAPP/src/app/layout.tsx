@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "sonner";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -9,28 +11,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "VisaPlace - Canadian & US Immigration Law Firm",
-  description: "Expert immigration lawyers helping you navigate Canadian and US immigration. Get your visa assessment today.",
-  keywords: "immigration lawyer, Canada visa, US visa, permanent residence, work permit, study permit",
-  authors: [{ name: "VisaPlace" }],
-  creator: "VisaPlace",
-  publisher: "VisaPlace",
+  title: "HALO – Expertise Capture App",
+  description: "Organize and capture human expertise for the AI age. HALO guides users through expert knowledge elicitation using four advanced methods.",
+  keywords: "expertise capture, knowledge elicitation, AI, narrative storytelling, protocol analysis, targeted questioning, simulation, HALO",
+  authors: [{ name: "HALO by Mega Lab" }],
+  creator: "HALO",
+  publisher: "HALO",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "VisaPlace - Canadian & US Immigration Law Firm",
-    description: "Expert immigration lawyers helping you navigate Canadian and US immigration. Get your visa assessment today.",
-    siteName: 'VisaPlace',
+    title: "HALO – Expertise Capture App",
+    description: "Organize and capture human expertise for the AI age. HALO guides users through expert knowledge elicitation using four advanced methods.",
+    siteName: 'HALO',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "VisaPlace - Canadian & US Immigration Law Firm",
-    description: "Expert immigration lawyers helping you navigate Canadian and US immigration. Get your visa assessment today.",
+    title: "HALO – Expertise Capture App",
+    description: "Organize and capture human expertise for the AI age. HALO guides users through expert knowledge elicitation using four advanced methods.",
   },
   robots: {
     index: true,
@@ -51,11 +53,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
-        <div className="min-h-screen bg-white">
-          {children}
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="min-h-screen bg-background text-foreground">
+            {children}
+          </div>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

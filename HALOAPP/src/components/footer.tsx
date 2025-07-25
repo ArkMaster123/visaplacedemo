@@ -1,136 +1,151 @@
 import Link from "next/link";
-import { Brain, Mail, Phone, MapPin, Target, Eye, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Github, Twitter, Linkedin, Brain, Target, Eye, Sparkles } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-900 text-white">
-      <div className="container-padding">
-        <div className="py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="relative bg-gradient-to-br from-background via-muted to-background overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-network-pattern opacity-20" />
+      
+      <div className="relative z-10 container-padding py-16">
+        <div className="max-w-6xl mx-auto">
+          {/* Main Footer Content */}
+          <div className="grid lg:grid-cols-4 gap-8 mb-12">
             {/* Company Info */}
-            <div>
-              <div className="flex items-center mb-6">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-white font-bold text-lg">H</span>
+            <div className="lg:col-span-2 space-y-6">
+              <div className="flex items-center space-x-3 group">
+                <div className="relative">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary via-secondary to-accent rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-glow-pink transition-all duration-300 overflow-hidden">
+                    <Image
+                      src="/logo.png"
+                      alt="HALO Logo"
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  HALO
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-bold bg-gradient-to-br from-primary via-secondary to-accent bg-clip-text text-transparent">
+                    HALO
+                  </span>
+                  <span className="text-xs text-muted-foreground font-medium -mt-1">
+                    AI Innovation Incubator
+                  </span>
+                </div>
               </div>
-              <p className="text-neutral-300 mb-6 leading-relaxed">
-                Organizing human expertise for the AI age. Advanced knowledge capture and elicitation powered by intelligent conversation.
+              
+              <p className="text-muted-foreground leading-relaxed max-w-md">
+                Transforming business challenges into intelligent solutions through advanced AI expertise capture and knowledge management.
               </p>
-              <div className="flex space-x-4">
-                <div className="flex items-center text-neutral-300">
-                  <Brain className="h-4 w-4 mr-2" />
-                  <span className="text-sm">AI-Powered Expertise Capture</span>
+              
+              <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <Brain className="h-4 w-4 text-primary" />
+                  <span>Expertise Capture</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <Target className="h-4 w-4 text-secondary" />
+                  <span>AI Solutions</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <Eye className="h-4 w-4 text-accent" />
+                  <span>Innovation</span>
+                </div>
+              </div>
+              
+              {/* Social Links */}
+              <div className="flex items-center space-x-4">
+                <Link href="#" className="p-2 bg-muted hover:bg-muted/80 rounded-lg transition-colors group">
+                  <Github className="h-5 w-5 text-muted-foreground group-hover:text-foreground" />
+                </Link>
+                <Link href="#" className="p-2 bg-muted hover:bg-muted/80 rounded-lg transition-colors group">
+                  <Twitter className="h-5 w-5 text-muted-foreground group-hover:text-foreground" />
+                </Link>
+                <Link href="#" className="p-2 bg-muted hover:bg-muted/80 rounded-lg transition-colors group">
+                  <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-foreground" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Methods */}
+            <div className="space-y-6">
+              <div>
+                <Badge variant="outline" className="mb-4 border-primary/30 text-primary">
+                  Methods
+                </Badge>
+                <h3 className="text-lg font-semibold text-foreground mb-4">Expertise Capture</h3>
+                <div className="space-y-3">
+                  <Link href="/assessment?method=1" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors group">
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <span>Narrative Storytelling</span>
+                  </Link>
+                  <Link href="/assessment?method=2" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors group">
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <span>Targeted Questioning</span>
+                  </Link>
+                  <Link href="/assessment?method=3" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors group">
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <span>Observational Simulation</span>
+                  </Link>
+                  <Link href="/assessment?method=4" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors group">
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <span>Protocol Analysis</span>
+                  </Link>
                 </div>
               </div>
             </div>
 
-            {/* Expertise Methods */}
-            <div>
-              <h3 className="font-semibold text-lg mb-6">Capture Methods</h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="/assessment?method=1" className="text-neutral-300 hover:text-white transition-colors flex items-center">
-                    <Brain className="h-4 w-4 mr-2" />
-                    Narrative Storytelling
+            {/* Process */}
+            <div className="space-y-6">
+              <div>
+                <Badge variant="outline" className="mb-4 border-secondary-500/30 text-secondary-400">
+                  Process
+                </Badge>
+                <h3 className="text-lg font-semibold text-white mb-4">How It Works</h3>
+                <div className="space-y-3">
+                  <Link href="/how-it-works/elicitation" className="flex items-center space-x-2 text-neutral-300 hover:text-secondary-400 transition-colors group">
+                    <div className="w-2 h-2 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-full" />
+                    <span>Knowledge Elicitation</span>
                   </Link>
-                </li>
-                <li>
-                  <Link href="/assessment?method=2" className="text-neutral-300 hover:text-white transition-colors flex items-center">
-                    <Target className="h-4 w-4 mr-2" />
-                    Targeted Questioning
+                  <Link href="/how-it-works/capture" className="flex items-center space-x-2 text-neutral-300 hover:text-secondary-400 transition-colors group">
+                    <div className="w-2 h-2 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-full" />
+                    <span>Expertise Capture</span>
                   </Link>
-                </li>
-                <li>
-                  <Link href="/assessment?method=3" className="text-neutral-300 hover:text-white transition-colors flex items-center">
-                    <Eye className="h-4 w-4 mr-2" />
-                    Observational Simulation
+                  <Link href="/how-it-works/analysis" className="flex items-center space-x-2 text-neutral-300 hover:text-secondary-400 transition-colors group">
+                    <div className="w-2 h-2 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-full" />
+                    <span>AI-Powered Analysis</span>
                   </Link>
-                </li>
-                <li>
-                  <Link href="/assessment?method=4" className="text-neutral-300 hover:text-white transition-colors flex items-center">
-                    <Sparkles className="h-4 w-4 mr-2" />
-                    Protocol Analysis
+                  <Link href="/how-it-works/organization" className="flex items-center space-x-2 text-neutral-300 hover:text-secondary-400 transition-colors group">
+                    <div className="w-2 h-2 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-full" />
+                    <span>Knowledge Organization</span>
                   </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* How It Works */}
-            <div>
-              <h3 className="font-semibold text-lg mb-6">How It Works</h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="/how-it-works/elicitation" className="text-neutral-300 hover:text-white transition-colors">
-                    Knowledge Elicitation
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/how-it-works/capture" className="text-neutral-300 hover:text-white transition-colors">
-                    Expertise Capture
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/how-it-works/analysis" className="text-neutral-300 hover:text-white transition-colors">
-                    AI-Powered Analysis
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/how-it-works/organization" className="text-neutral-300 hover:text-white transition-colors">
-                    Knowledge Organization
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h3 className="font-semibold text-lg mb-6">Company</h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="/about" className="text-neutral-300 hover:text-white transition-colors">
-                    About HALO
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about/technology" className="text-neutral-300 hover:text-white transition-colors">
-                    Technology
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about/research" className="text-neutral-300 hover:text-white transition-colors">
-                    Research
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="text-neutral-300 hover:text-white transition-colors">
-                    Contact Us
-                  </Link>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-neutral-800 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-neutral-400 text-sm">
-              © 2024 HALO by Mega Lab. All rights reserved.
-            </div>
-            <div className="flex space-x-6 text-sm">
-              <Link href="/privacy" className="text-neutral-400 hover:text-white transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-neutral-400 hover:text-white transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="/contact" className="text-neutral-400 hover:text-white transition-colors">
-                Support
-              </Link>
+          {/* Bottom Bar */}
+          <div className="pt-8 border-t border-neutral-800">
+            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+              <div className="text-sm text-neutral-400">
+                © 2024 HALO AI Innovation Incubator. All rights reserved.
+              </div>
+              <div className="flex items-center space-x-6 text-sm">
+                <Link href="/privacy" className="text-neutral-400 hover:text-primary-400 transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms" className="text-neutral-400 hover:text-primary-400 transition-colors">
+                  Terms of Service
+                </Link>
+                <Link href="/contact" className="text-neutral-400 hover:text-primary-400 transition-colors">
+                  Contact
+                </Link>
+              </div>
             </div>
           </div>
         </div>

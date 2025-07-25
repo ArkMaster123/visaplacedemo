@@ -80,7 +80,7 @@ export default function AssessmentPage() {
 
   if (!isFormComplete) {
     return (
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-background">
         <Header />
         
         {/* Hero Section */}
@@ -93,22 +93,22 @@ export default function AssessmentPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-800/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-muted/70"></div>
           </div>
           
           <div className="relative z-10 container-padding w-full">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <div className="inline-flex items-center rounded-full bg-white/20 backdrop-blur-sm px-6 py-3 text-sm font-medium mb-6">
+            <div className="max-w-4xl mx-auto text-center text-foreground">
+              <div className="inline-flex items-center rounded-full bg-card/20 backdrop-blur-sm px-6 py-3 text-sm font-medium mb-6">
                 <Brain className="mr-2 h-4 w-4" />
                 Method {method} Setup
               </div>
               
               <h1 className="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
                 Method {method}:
-                <span className="block text-amber-100">{methodTitles[method as keyof typeof methodTitles]}</span>
+                <span className="block text-accent">{methodTitles[method as keyof typeof methodTitles]}</span>
               </h1>
               
-              <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed text-blue-100">
+              <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed text-muted-foreground">
                 {methodDescriptions[method as keyof typeof methodDescriptions]}
               </p>
             </div>
@@ -116,22 +116,22 @@ export default function AssessmentPage() {
         </section>
 
         {/* User Info Form */}
-        <section className="py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 relative">
+        <section className="py-16 bg-gradient-to-br from-background via-muted/30 to-background relative">
           <div className="container-padding relative z-10">
             <div className="max-w-2xl mx-auto">
-              <Card className="bg-white/70 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8">
+              <Card className="bg-card/70 backdrop-blur-xl border border-border rounded-3xl shadow-2xl p-8">
                 <div className="text-center mb-8">
-                  <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                  <h2 className="text-3xl font-bold text-card-foreground mb-4">
                     Tell Us About Yourself
                   </h2>
-                  <p className="text-slate-600">
+                  <p className="text-muted-foreground">
                     This information will help Spark personalize your expertise capture session.
                   </p>
                 </div>
 
                 <form onSubmit={handleFormSubmit} className="space-y-6">
                   <div>
-                    <label className="flex items-center text-sm font-medium text-slate-700 mb-2">
+                    <label className="flex items-center text-sm font-medium text-muted-foreground mb-2">
                       <User className="h-4 w-4 mr-2" />
                       Your Name
                     </label>
@@ -141,12 +141,12 @@ export default function AssessmentPage() {
                       onChange={(e) => handleInputChange('name', e.target.value)}
                       placeholder="e.g., Tim"
                       required
-                      className="text-lg py-3"
+                      className="text-lg py-3 bg-background border-border text-foreground placeholder-muted-foreground"
                     />
                   </div>
 
                   <div>
-                    <label className="flex items-center text-sm font-medium text-slate-700 mb-2">
+                    <label className="flex items-center text-sm font-medium text-muted-foreground mb-2">
                       <Building className="h-4 w-4 mr-2" />
                       Your Domain/Field
                     </label>
@@ -156,12 +156,12 @@ export default function AssessmentPage() {
                       onChange={(e) => handleInputChange('domain', e.target.value)}
                       placeholder="e.g., Advertising/Marketing, Software Engineering, Healthcare"
                       required
-                      className="text-lg py-3"
+                      className="text-lg py-3 bg-background border-border text-foreground placeholder-muted-foreground"
                     />
                   </div>
 
                   <div>
-                    <label className="flex items-center text-sm font-medium text-slate-700 mb-2">
+                    <label className="flex items-center text-sm font-medium text-muted-foreground mb-2">
                       <History className="h-4 w-4 mr-2" />
                       Key Background/History
                     </label>
@@ -171,13 +171,13 @@ export default function AssessmentPage() {
                       onChange={(e) => handleInputChange('history', e.target.value)}
                       placeholder="e.g., Working at Publicis, 10 years in tech startups"
                       required
-                      className="text-lg py-3"
+                      className="text-lg py-3 bg-background border-border text-foreground placeholder-muted-foreground"
                     />
                   </div>
 
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg py-4 mt-8"
+                    className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-lg py-4 mt-8"
                     disabled={!formData.name || !formData.domain || !formData.history}
                   >
                     Start Method {method} Session
@@ -195,7 +195,7 @@ export default function AssessmentPage() {
 
   // Show chat interface once form is complete
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section with Method Info */}
@@ -247,7 +247,7 @@ export default function AssessmentPage() {
       </section>
 
       {/* Chat Section */}
-      <section className="py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 relative">
+      <section className="py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900 relative">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
@@ -256,7 +256,7 @@ export default function AssessmentPage() {
         
         <div className="container-padding relative z-10">
           <div className="max-w-5xl mx-auto">
-            <div className="bg-white/70 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8">
+            <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-white/20 dark:border-slate-700/20 rounded-3xl shadow-2xl p-8">
               <AssessmentChatbot method={method} userInfo={userInfo} />
             </div>
           </div>

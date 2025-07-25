@@ -466,16 +466,16 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
           className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           onClick={handleModalClick}
         >
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden border border-white/20">
+          <div className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden border border-white/20 dark:border-slate-700/20">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-200/50">
+            <div className="flex items-center justify-between p-6 border-b border-slate-200/50 dark:border-slate-700/50">
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100">
-                  <Brain className="h-5 w-5 text-blue-800" />
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900">
+                  <Brain className="h-5 w-5 text-blue-800 dark:text-blue-200" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold text-slate-900">How Our AI Assessment Works</h2>
-                  <p className="text-sm text-slate-600">
+                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white">How Our AI Assessment Works</h2>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">
                     Step {currentStep + 1} of {howItWorksSteps.length}
                   </p>
                 </div>
@@ -484,7 +484,7 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                 variant="ghost"
                 size="sm"
                 onClick={closeHowItWorks}
-                className="rounded-full w-8 h-8 p-0 hover:bg-slate-100"
+                className="rounded-full w-8 h-8 p-0 hover:bg-slate-100 dark:hover:bg-slate-700"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -518,20 +518,20 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                     className: "h-8 w-8 text-blue-800"
                   })}
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-slate-900">
+                <h3 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white">
                   {howItWorksSteps[currentStep].title}
                 </h3>
-                <p className="text-slate-600 text-lg mb-6">
+                <p className="text-slate-600 dark:text-slate-300 text-lg mb-6">
                   {howItWorksSteps[currentStep].description}
                 </p>
 
                 {/* Details List */}
-                <div className="bg-slate-50/80 backdrop-blur-sm rounded-lg p-4">
+                <div className="bg-slate-50/80 dark:bg-slate-700/80 backdrop-blur-sm rounded-lg p-4">
                   <ul className="space-y-2 text-left">
                     {howItWorksSteps[currentStep].details.map((detail, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-slate-700">{detail}</span>
+                        <span className="text-sm text-slate-700 dark:text-slate-300">{detail}</span>
                       </li>
                     ))}
                   </ul>
@@ -544,7 +544,7 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                   variant="outline"
                   onClick={prevStep}
                   disabled={currentStep === 0}
-                  className="flex items-center gap-2 border-slate-300 hover:bg-slate-50"
+                  className="flex items-center gap-2 border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700"
                 >
                   <ChevronLeft className="h-4 w-4" />
                   Previous
@@ -579,16 +579,16 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
           className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           onClick={handleModalClick}
         >
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-hidden border border-white/20">
+          <div className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-hidden border border-white/20 dark:border-slate-700/20">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-200/50">
+            <div className="flex items-center justify-between p-6 border-b border-slate-200/50 dark:border-slate-700/50">
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100">
-                  <Settings className="h-5 w-5 text-blue-800" />
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900">
+                  <Settings className="h-5 w-5 text-blue-800 dark:text-blue-200" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold text-slate-900">AI Model Settings</h2>
-                  <p className="text-sm text-slate-600">
+                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white">AI Model Settings</h2>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">
                     Choose your preferred AI model
                   </p>
                 </div>
@@ -597,7 +597,7 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                 variant="ghost"
                 size="sm"
                 onClick={closeSettings}
-                className="rounded-full w-8 h-8 p-0 hover:bg-slate-100"
+                className="rounded-full w-8 h-8 p-0 hover:bg-slate-100 dark:hover:bg-slate-700"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -610,23 +610,23 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                   <div
                     key={model.id}
                     className={cn(
-                      "p-4 rounded-lg border-2 cursor-pointer transition-all hover:bg-slate-50",
+                      "p-4 rounded-lg border-2 cursor-pointer transition-all hover:bg-slate-50 dark:hover:bg-slate-700",
                       selectedModel === model.id
-                        ? "border-blue-500 bg-blue-50"
-                        : "border-slate-200"
+                        ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
+                        : "border-slate-200 dark:border-slate-600"
                     )}
                     onClick={() => handleModelChange(model.id)}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700">
                           {React.createElement(model.icon, {
-                            className: "h-4 w-4 text-slate-600"
+                            className: "h-4 w-4 text-slate-600 dark:text-slate-300"
                           })}
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <h3 className="font-medium text-slate-900">{model.name}</h3>
+                            <h3 className="font-medium text-slate-900 dark:text-white">{model.name}</h3>
                             <Badge 
                               variant={model.badge === 'Recommended' ? 'default' : 'secondary'}
                               className="text-xs"
@@ -634,7 +634,7 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                               {model.badge}
                             </Badge>
                           </div>
-                          <p className="text-sm text-slate-600">{model.description}</p>
+                          <p className="text-sm text-slate-600 dark:text-slate-300">{model.description}</p>
                         </div>
                       </div>
                       {selectedModel === model.id && (
@@ -645,8 +645,8 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                 ))}
               </div>
 
-              <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
-                <p className="text-sm text-amber-800">
+              <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-700">
+                <p className="text-sm text-amber-800 dark:text-amber-200">
                   <strong>Note:</strong> Changing the model will affect future responses. 
                   Consider resetting the assessment to start fresh with the new model.
                 </p>
@@ -661,12 +661,12 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100">
-              <Briefcase className="h-5 w-5 text-blue-800" />
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900">
+              <Briefcase className="h-5 w-5 text-blue-800 dark:text-blue-200" />
             </div>
             <div>
-                              <h2 className="text-xl font-semibold text-slate-900">Expertise Capture Session</h2>
-                              <p className="text-sm text-slate-600 font-normal">
+                              <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Expertise Capture Session</h2>
+                              <p className="text-sm text-slate-600 dark:text-slate-300 font-normal">
                   AI-powered knowledge elicitation with Spark
               </p>
             </div>
@@ -718,16 +718,16 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
         {/* Progress Bar */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-slate-700">Expertise Capture Progress</span>
-            <span className="text-sm text-slate-600">{currentProgress}%</span>
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Expertise Capture Progress</span>
+            <span className="text-sm text-slate-600 dark:text-slate-400">{currentProgress}%</span>
           </div>
           <Progress value={currentProgress} className="h-2" />
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="mb-4 p-4 bg-red-50/80 backdrop-blur-sm border border-red-200 rounded-lg">
-            <p className="text-sm text-red-700">
+          <div className="mb-4 p-4 bg-red-50/80 dark:bg-red-900/20 backdrop-blur-sm border border-red-200 dark:border-red-700 rounded-lg">
+            <p className="text-sm text-red-700 dark:text-red-300">
               <strong>Error:</strong> {error}
             </p>
             <Button 
@@ -751,8 +751,8 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                 message.role === 'user' ? 'justify-end' : 'justify-start'
               )}>
                 {message.role === 'assistant' && (
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 flex-shrink-0 mt-1">
-                    <Briefcase className="h-4 w-4 text-blue-800" />
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex-shrink-0 mt-1">
+                    <Briefcase className="h-4 w-4 text-blue-800 dark:text-blue-200" />
                   </div>
                 )}
                 
@@ -760,14 +760,14 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                   "max-w-[80%] rounded-2xl px-4 py-3",
                   message.role === 'user'
                     ? 'bg-blue-800 text-white'
-                    : 'bg-slate-100/80 backdrop-blur-sm text-slate-900'
+                    : 'bg-slate-100/80 dark:bg-slate-700/80 backdrop-blur-sm text-slate-900 dark:text-white'
                 )}>
                   <p className="whitespace-pre-wrap">{message.content}</p>
                 </div>
                 
                 {message.role === 'user' && (
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-200 flex-shrink-0 mt-1">
-                    <User className="h-4 w-4 text-slate-600" />
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-600 flex-shrink-0 mt-1">
+                    <User className="h-4 w-4 text-slate-600 dark:text-slate-300" />
                   </div>
                 )}
               </div>
@@ -789,16 +789,16 @@ export default function AssessmentChatbot({ method, userInfo }: AssessmentChatbo
                         <Button
                           key={option.id}
                           variant="outline"
-                          className="justify-start text-left h-auto p-4 hover:bg-blue-50 hover:border-blue-300 border-slate-200"
+                          className="justify-start text-left h-auto p-4 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600 border-slate-200 dark:border-slate-600"
                           onClick={() => handleOptionClick(option)}
                           disabled={isLoading}
                         >
                           <div className="flex items-center gap-3 w-full">
-                            <ArrowRight className="h-4 w-4 text-blue-800 flex-shrink-0" />
+                            <ArrowRight className="h-4 w-4 text-blue-800 dark:text-blue-300 flex-shrink-0" />
                             <div className="flex-1">
-                              <div className="font-medium text-slate-900">{option.text}</div>
+                              <div className="font-medium text-slate-900 dark:text-white">{option.text}</div>
                               {option.description && (
-                                <div className="text-sm text-slate-600 mt-1">
+                                <div className="text-sm text-slate-600 dark:text-slate-300 mt-1">
                                   {option.description}
                                 </div>
                               )}
