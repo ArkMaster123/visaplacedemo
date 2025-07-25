@@ -416,10 +416,12 @@ export default function Home() {
                     Start Innovation
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-border hover:border-primary hover:bg-muted text-lg px-8 py-6 text-foreground">
-                    <Play className="mr-2 h-5 w-5" />
-                    Explore Solutions
-                  </Button>
+                  <Link href="/multi-agent" passHref legacyBehavior>
+                    <Button size="lg" variant="outline" className="border-2 border-border hover:border-primary hover:bg-muted text-lg px-8 py-6 text-foreground">
+                      <Sparkles className="mr-2 h-5 w-5" />
+                      Multi-Agent Demo
+                    </Button>
+                  </Link>
                 </div>
 
                 {/* Stats */}
@@ -492,6 +494,29 @@ export default function Home() {
                   </Tabs>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Spark Voice Section */}
+      <section className="py-16 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
+        <div className="container-padding max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center bg-gradient-to-r from-primary to-secondary text-primary-foreground rounded-full px-6 py-2 mb-6 shadow-lg">
+            <Sparkles className="h-5 w-5 mr-2" />
+            Introducing Spark Voice
+          </div>
+          <h2 className="text-4xl font-bold mb-4 text-foreground">Meet Spark Voice</h2>
+          <p className="text-lg text-muted-foreground mb-6">
+            <span className="font-semibold text-primary">Spark Voice</span> is our advanced conversational AI, designed to capture expertise, surface tacit knowledge, and enable natural, voice-driven interviews. Spark Voice powers the most intuitive, human-like knowledge elicitation—no scripts, just real conversation. Use it in our multi-agent demo or as a standalone tool to unlock deeper insights from your team.
+          </p>
+          <div className="flex justify-center">
+            <div className="rounded-2xl bg-card shadow-xl border border-border px-8 py-6 inline-block">
+              <div className="flex items-center justify-center mb-2">
+                <Sparkles className="h-8 w-8 text-primary animate-glow" />
+              </div>
+              <div className="text-xl font-semibold text-card-foreground mb-1">Spark Voice</div>
+              <div className="text-sm text-muted-foreground">Conversational AI for expertise capture</div>
             </div>
           </div>
         </div>
